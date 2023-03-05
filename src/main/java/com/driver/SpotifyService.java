@@ -2,7 +2,6 @@ package com.driver;
 
 import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,8 +9,7 @@ public class SpotifyService {
 
     //Auto-wire will not work in this case, no need to change this and add autowire
 
-    @Autowired
-    SpotifyRepository spotifyRepository;
+    SpotifyRepository spotifyRepository = new SpotifyRepository();
 
     public User createUser(String name, String mobile){
         return spotifyRepository.createUser(name,mobile);
@@ -22,15 +20,15 @@ public class SpotifyService {
     }
 
     public Album createAlbum(String title, String artistName) {
-        return spotifyRepository.createAlbum(title,artistName);
+        return spotifyRepository.createAlbum(title, artistName);
     }
 
     public Song createSong(String title, String albumName, int length) throws Exception {
-        return spotifyRepository.createSong(title,albumName,length);
+        return spotifyRepository.createSong(title, albumName, length);
     }
 
     public Playlist createPlaylistOnLength(String mobile, String title, int length) throws Exception {
-        return spotifyRepository.createPlaylistOnLength(mobile,title,length);
+        return spotifyRepository.createPlaylistOnLength(mobile, title, length);
     }
 
     public Playlist createPlaylistOnName(String mobile, String title, List<String> songTitles) throws Exception {
